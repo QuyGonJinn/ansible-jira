@@ -1,0 +1,4 @@
+---
+jira_tarball_name: "atlassian-jira-software-{{ jira_version }}.tar.gz"
+jira_extract_dir: "atlassian-jira-software-{{ jira_version }}"
+jira_install_path: "{{ jira_install_dir }}/jira"

@@ -1,0 +1,9 @@
+---
+- name: Sicherstellen, das die Pakete vorinstalliert werden 
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - curl
+    - tar
+    - default-jdk

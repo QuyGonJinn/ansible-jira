@@ -1,0 +1,8 @@
+---
+- name: Sicherstellen, das die Berechtigung der Jira-Verzeichnisse richtig gesetzt ist 
+  file:
+    path: "{{ jira_install_path }}"
+    state: directory
+    recurse: yes
+    owner: "{{ jira_user }}"
+    group: "{{ jira_group }}"

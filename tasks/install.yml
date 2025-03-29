@@ -1,0 +1,19 @@
+---
+- name: Backup existing Jira installation if present
+  command: mv {{ jira_install_path }} {{ jira_install_path }}_backup_{{ ansible_date_time.iso8601 }}
+  when: ansible_facts['filesystem'][jira_install_path] is defined
+  ignore_errors: yes
+
+- name: Stoppen von Jira service
+  systemd:
+    name: jira
+    state: stop
+
+- name: Jira Tarball extrahieren
+  unarchive:
+    src: "/tmp/{{ jira_tarball_name }}"
+    dest: "{{ jira_install_dir }}"
+    remote_src: yes
+    extra_opts: ["--strip-components=1"]
+    creates: "{{ jira_install_path }}/bin/start-jira.sh"
+

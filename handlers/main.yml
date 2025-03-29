@@ -1,0 +1,5 @@
+---
+- name: Jira neustarten
+  systemd:
+    name: jira
+    state: restarted

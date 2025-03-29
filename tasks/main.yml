@@ -1,0 +1,21 @@
+---
+- name: INCLUDE - Pre-Installation 
+  include_tasks: preinstall.yml
+
+- name: INCLUDE - User & Directory Setup
+  include_tasks: user_and_dirs.yml
+
+- name: INCLUDE - Download Jira
+  include_tasks: download.yml
+
+- name: INCLUDE - Installation oder Upgrade von Jira
+  include_tasks: install.yml
+
+- name: INCLUDE - Berechtigung setzen
+  include_tasks: permissions.yml
+
+- name: INCLUDE - server.xml and setenv.sh konfigurieren
+  include_tasks: config_files.yml
+
+- name: INCLUDE - Konfigurieren & Starten von Service
+  include_tasks: service.yml

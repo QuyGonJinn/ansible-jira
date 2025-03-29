@@ -1,0 +1,16 @@
+[Unit]
+Description=Atlassian Jira
+After=network.target
+
+[Service]
+Type=forking
+User={{ jira_user }}
+ExecStart={{ jira_install_path }}/bin/start-jira.sh
+ExecStop={{ jira_install_path }}/bin/stop-jira.sh
+PIDFile=/tmp/jira.pid
+LimitNOFILE=65536
+TimeoutSec=600
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

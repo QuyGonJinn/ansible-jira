@@ -1,0 +1,25 @@
+---
+- name: Gruppe Jira erstellen
+  group:
+    name: "{{ jira_group }}"
+    state: present
+
+- name: User Jira erstellen
+  user:
+    name: "{{ jira_user }}"
+    group: "{{ jira_group }}"
+    shell: /bin/bash
+    home: "{{ jira_home }}"
+    create_home: yes
+    state: present
+
+- name: Ordner erstellen 
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ jira_user }}"
+    group: "{{ jira_group }}"
+    mode: '0755'
+  loop:
+    - "{{ jira_install_dir }}"
+    - "{{ jira_home }}"
